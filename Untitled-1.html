@@ -1,0 +1,22 @@
+<html>
+<head>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Green Connect RDV</title>
+</head>
+<body>
+    <div>
+    <p>Votre rendez vous est confirmé</p>
+    <p>Information du rendez vous : {{$rdv->Name}} , {{$rdv->LastName}}</p>
+    <p> Votre numero de telephone : {{$rdv->Telephone}}</p>
+    <p> a l'adresse suivante : {{$rdv->Adresse}}</p>
+
+    <p>Vous recevrez un mail a l'adresse suivante : {{$rdv->Email}}</p>
+    </div>
+    
+    <p><button class=" "><a href="/">Acceuil</a></p></button>
+
+</body>
+</html>
