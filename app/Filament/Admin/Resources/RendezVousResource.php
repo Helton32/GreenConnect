@@ -67,9 +67,7 @@ class RendezVousResource extends Resource
                 TextColumn::make('Quantite'),
                 TextColumn::make('AvisImpots'),
                 TextColumn::make('FactureGazElec'),
-                SelectColumn::make('status')->options(['en cours' => 'En cours',
-                                                        'terminé' => 'Terminé',]),
-           
+                TextColumn::make('status')
             ])
             ->filters([
                 

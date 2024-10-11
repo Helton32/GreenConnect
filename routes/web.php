@@ -23,6 +23,12 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::middleware(['auth'])->group(function () {
+    Route::post('/update-status', [HomeController::class, 'updateStatus'])->name('update-status');
+});
+
+
+
 
 Route::get('/acceuil', function () {
     return view('home');

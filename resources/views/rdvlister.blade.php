@@ -35,7 +35,17 @@
                                     <td class="border px-4 py-2">{{ $rdvs->Date }}</td>
                                     <td class="border px-4 py-2">{{ $rdvs->Heure }}</td>
                                     <td class="border px-4 py-2">{{ $rdvs->Email }}</td>
-                                    <td class="border px-4 py-2">{{ $rdvs->status }}</td>
+
+                                    <td class="border px-4 py-2">
+                                       <form method="POST" action="{{ route('update-status') }}">
+                                              @csrf
+                                         <input type="hidden" name="id" value="{{ $rdvs->id }}">
+                                         <select name="status" onchange="this.form.submit()">
+                                         <option value="en cours" {{ $rdvs->status == 'en cours' ? 'selected' : '' }}>En cours</option>
+                                         <option value="terminé" {{ $rdvs->status == 'terminé' ? 'selected' : '' }}>Terminé</option>
+                                         </select>
+                                       </form>
+                                        </td>                                
                                 </tr>
                             @endforeach
 

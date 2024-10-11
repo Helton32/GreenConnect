@@ -97,45 +97,36 @@
           </div>
         
       
-      <!-- Checkbox to show/hide additional file upload fields -->
-    <div class="sm:col-span-2 mt-4">
-      <input type="checkbox" id="show-files" name="ShowFiles" class="mr-2">
-      <label for="show-files" class="text-sm font-semibold leading-6 text-gray-900">Fournir des documents pour verifier votre eligibilité (facultatif). Vous seront demandé le jour du rendez vous.</label>
-    </div>
-
-    <!-- Hidden file upload fields -->
-    <div id="file-uploads" class="sm:col-span-2 mt-4 hidden">
-      <div class="sm:col-span-2">
-        <label for="avis-impots" class="block text-sm font-semibold leading-6 text-gray-900">Derniers Avis d'impots (Facultatif)</label>
-        <div class="relative mt-2.5">
-          <input type="file" name="AvisImpots" id="avis-impots" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+      <div class="mt-10">
+        <div class="sm:col-span-2">
+          <label for="AvisImpots" class="block text-sm font-semibold leading-6 text-gray-900">Derniers Avis d'impots (Falcultatif possibilité de remettre au moment de l'installation)</label>
+          <div class="relative mt-2.5">
+            <input type="file" name="AvisImpots"  class="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
         </div>
       </div>
-      <div class="sm:col-span-2 mt-4">
-        <label for="facture-gaz-elec" class="block text-sm font-semibold leading-6 text-gray-900">Facture Elec/Gaz (Facultatif)</label>
-        <div class="relative mt-2.5">
-          <input type="file" name="FactureGazElec" id="facture-gaz-elec" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+
+        <div class="sm:col-span-2">
+          <label for="FactureGaz/Elec" class="block text-sm font-semibold leading-6 text-gray-900">Facture Elec/Gaz (Falcultatif possibilité de remettre au moment de l'installation)</label>
+          <div class="relative mt-2.5">
+            <input type="file" name="FactureGazElec"  class="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
         </div>
-      </div>
-    </div>
-
-    <div class="sm:col-span-2 mt-10">
-      <label for="message" class="block text-sm font-semibold leading-6 text-gray-900">Informations supplémentaires</label>
-      <div class="mt-2.5">
-        <textarea name="Message" id="message" rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
-      </div>
-    </div>
-    
-    <button type="submit" class="mt-6 block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Confirmer votre rendez-vous</button>
-  </div>
-</form>
-
-<script>
-  document.getElementById('show-files').addEventListener('change', function() {
-    const fileUploads = document.getElementById('file-uploads');
-    fileUploads.classList.toggle('hidden', !this.checked);
-  });
-</script>
+        <div class="sm:col-span-2">
+          <label for="Message" class="block text-sm font-semibold leading-6 text-gray-900">Informations supplementaires</label>
+          <div class="mt-2.5">
+            <textarea name="Message"rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+          </div>
+        </div>
+        <div class="flex gap-x-4 sm:col-span-2">
+          <div class="flex h-6 items-center">
+            <!-- Enabled: "bg-indigo-600", Not Enabled: "bg-gray-200" -->
+            
+          </div>
+          
+        </div>
+        <button type="submit" class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Confirmer votre rendez vous</button>
+      
     </form>
   </div>
 </div>
