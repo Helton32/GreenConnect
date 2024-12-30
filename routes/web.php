@@ -1,11 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Filament\Pages\VisitorDashboard;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MessagesController;
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,15 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
 });
-
-
-Route::middleware(['auth'])->group(function () {
-    Route::post('/update-status', [HomeController::class, 'updateStatus'])->name('update-status');
-});
-
-
 
 
 Route::get('/acceuil', function () {
@@ -63,6 +53,7 @@ Route::get('/services', function () {
 
 Route::get('/rdvlister', [HomeController::class, 'show'])->name('rdvlister');
 
+Route::post('/update-status', [HomeController::class, 'updateStatus'])->name('update-status');
 
 
 require __DIR__.'/auth.php';

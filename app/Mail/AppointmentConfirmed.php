@@ -3,53 +3,35 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
+use App\Mail\AppointmentConfirmed;
 use Illuminate\Queue\SerializesModels;
 
 class AppointmentConfirmed extends Mailable
 {
     use Queueable, SerializesModels;
 
-        use Queueable, SerializesModels;
-    
-        public $rdv;
-    
-        public function __construct($rdv)
-        {
-            $this->rdv = $rdv;
-        }
-
-    
-    /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject: 'Appointment Confirmed'
-        );
-    }
+    public $data;
 
     /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'emails.appointment_confirmed',
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
+     * Create a new message instance.
      *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     * @return void
      */
-    public function attachments(): array
+    public function __construct($data)
     {
-        return [];
+        $this->data = $data;
+    }
+
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
+        return $this->subject('Confirmation de votre rendez-vous')
+                    ->view('emails.appointment_confirmation')
+                    ->with('data', $this->data);
     }
 }

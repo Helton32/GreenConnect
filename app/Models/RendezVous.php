@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class RendezVous extends Model
 {
-    use HasFactory , Notifiable;
+    use HasFactory , Notifiable  ;
+
     protected $fillable = ['Name','LastName','Adresse','Telephone','Email','Superficie','Energie','Quantite','Date','Heure','Documents','Message','status'];
 
    // Relation avec l'utilisateur

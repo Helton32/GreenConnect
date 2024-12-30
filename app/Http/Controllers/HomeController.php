@@ -10,6 +10,7 @@ use App\Mail\AppointmentConfirmed;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\HomeController;
+use App\Http\Resources\RendezVousRessource;
 
 class HomeController extends Controller
 {
@@ -19,6 +20,7 @@ class HomeController extends Controller
         
 
     }
+
 
     public function store(Request $request) {
 
@@ -42,12 +44,16 @@ class HomeController extends Controller
                 <a href="'.route('rdvcreate').'" style="color:blue; text-decoration:underline;">Retourner à la page de création du rendez-vous</a>
             ', 200)
             ->header('Content-Type', 'text/html'); // Set the response type to HTML
+        
+            
         }
          else {
             
-          //  Mail::to($rdv->Email)->send(new AppointmentConfirmed($rdv));
-
              $rdv->save();
+             // Envoi de l'e-mail
+             Mail::to($request->Email)->send(new AppointmentConfirmed($request->all()));
+
+             
  
          }
         
@@ -59,8 +65,10 @@ class HomeController extends Controller
     public function show() {
         //listing des commandes
         $rdv = Rendezvous::all() ;
-       
+
+
         return view('rdvlister', compact('rdv'));
+
         
     }
     public function updateStatus(Request $request)
@@ -80,4 +88,25 @@ class HomeController extends Controller
 
         return back();
     }
+    public function destroy($id) {
+        $rdv = RendezVous::find($id);
+
+        if ($rdv) {
+            $rdv->delete();
+            return back()->with('success', 'Le rendez-vous a été supprimé avec succès.');
+        } else {
+            return back()->with('error', 'Le rendez-vous n\'existe pas.');
+        }
 }
+
+public function getNewAppointments(Request $request)
+{
+    $lastChecked = $request->query('last_checked');
+    $newAppointments = Appointment::where('created_at', '>', $lastChecked)->get();
+
+    return response()->json($newAppointments);
+}
+
+   
+}
+
