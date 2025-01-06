@@ -64,7 +64,7 @@ class HomeController extends Controller
     }
     public function show() {
         //listing des commandes
-        $rdv = Rendezvous::all() ;
+        $rdv = Rendezvous::paginate(10) ;
 
 
         return view('rdvlister', compact('rdv'));
@@ -102,7 +102,7 @@ class HomeController extends Controller
 public function getNewAppointments(Request $request)
 {
     $lastChecked = $request->query('last_checked');
-    $newAppointments = Appointment::where('created_at', '>', $lastChecked)->get();
+    $newAppointments = RendezVous::where('created_at', '>', $lastChecked)->get();
 
     return response()->json($newAppointments);
 }

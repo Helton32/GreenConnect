@@ -69,6 +69,8 @@ class RendezVousResource extends Resource
                 TextColumn::make('FactureGazElec'),
                 TextColumn::make('status')
             ])
+            ->defaultSort('Date', 'desc') // Sort by 'Date' column in descending order
+
             ->filters([
                 
             ])
